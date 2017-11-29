@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>还款计划表</title>
+  <link rel="stylesheet" href="layui/css/layui.css">
+  <link rel="shortcut icon" href="layui/images/face/62.gif" type="image/x-icon" />
+  <script src="layui/layui.js"></script>
+  
+</head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <div class="layui-logo">还款计划</div>
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <ul class="layui-nav layui-layout-left">
+      <li class="layui-nav-item"><a href="">控制台</a></li>
+      <li class="layui-nav-item"><a href="">商品管理</a></li>
+      <li class="layui-nav-item"><a href="">用户</a></li>
+      <li class="layui-nav-item">
+        <a href="javascript:;">其它系统</a>
+        <dl class="layui-nav-child">
+          <dd><a href="">邮件管理</a></dd>
+          <dd><a href="">消息管理</a></dd>
+          <dd><a href="">授权管理</a></dd>
+        </dl>
+      </li>
+    </ul>
+    <ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item">
+        <a href="javascript:;">
+          <img src="layui/images/face/hd.jpg" class="layui-nav-img">
+          Admin
+        </a>
+        <dl class="layui-nav-child">
+          <dd><a href="">基本资料</a></dd>
+          <dd><a href="">安全设置</a></dd>
+        </dl>
+      </li>
+      <li class="layui-nav-item"><a href="">退出</a></li>
+    </ul>
+  </div>
+  
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item layui-nav-itemed">
+          <a class="" href="javascript:;">所有商品</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">列表一</a></dd>
+            <dd><a href="javascript:;">列表二</a></dd>
+            <dd><a href="javascript:;">列表三</a></dd>
+            <dd><a href="">超链接</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item">
+          <a href="javascript:;">解决方案</a>
+          <dl class="layui-nav-child">
+            <dd><a href="javascript:;">列表一</a></dd>
+            <dd><a href="javascript:;">列表二</a></dd>
+            <dd><a href="">超链接</a></dd>
+          </dl>
+        </li>
+        <li class="layui-nav-item"><a href="">云市场</a></li>
+        <li class="layui-nav-item"><a href="">发布商品</a></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="layui-body">
+    <!-- 内容主体区域 -->
+    <div style="padding: 15px;">
+	火球理财
+	<table id="test" class="layui-hide"></table>
+	   
+	
+	<script>
+layui.use('table', function(){
+  var table = layui.table;
+  
+  table.render({
+    elem: '#test'
+    ,url:'/Data_Clear/hq/list.do'
+    ,cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+    ,cols: [[
+      {field:'project_period', width:140, title: '项目标期', sort: true}
+      ,{field:'application_time', width:140, title: '借款申请时间'}
+      ,{field:'grant_time', width:140, title: '借款发放时间'}
+      ,{field:'principal_apply', width:140, title: '申请借款本金'}
+      ,{field:'principal_actual', width:140, title: '实际放款本金'}
+      ,{field:'principal_number', width:140, title: '发出件数（件）'}
+      ,{field:'refuse_number', width:140, title: '退回件数（件）'}
+      ,{field:'actual_number', width:140, title: '实放件数（件）'}
+      ,{field:'term', width:140, title: '借款期限（天数）'}
+      ,{field:'rate', width:140, title: '利率（年化）'}
+      ,{field:'interest_date', width:140, title: '系统起息时间'}
+      ,{field:'over_interest_date', width:140, title: '系统到期时间'}
+      ,{field:'return_data', width:140, title: '应还时间'}
+      ,{field:'estimate_principal', width:140, title: '预计还款金额'}
+      ,{field:'actual_principal', width:140, title: '实际应还本金'}
+      ,{field:'bond', width:140, title: '预付保证金'}
+      ,{field:'actual_bond', width:140, title: '实付保证金'}
+      ,{field:'service_charge', width:140, title: '服务费'}
+      ,{field:'interest', width:140, title: '利息'}
+      ,{field:'total', width:140, title: '合计'}
+      ,{field:'actual_total_interest', width:140, title: '实际应还利息合计'}
+      ,{field:'actual_total_all', width:140, title: '实际应还合计'}
+      ,{field:'actual_return_date', width:140, title: '实际还款时间'}
+      ,{field:'actual_return_amount', width:140, title: '实际已还金额'}
+    ]]
+  ,page: true
+  });
+});
+</script>
+	
+
+    
+    
+    
+    
+    
+    </div>
+  </div>
+  
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    © layui.com
+  </div>
+</div>
+
+<script>
+//JavaScript代码区域
+layui.use('element', function(){
+  var element = layui.element;
+  
+});
+</script>
+
+</body>
+</html>
