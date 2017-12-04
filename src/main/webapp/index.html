@@ -6,7 +6,8 @@
   <title>还款计划表</title>
   <link rel="stylesheet" href="layui/css/layui.css">
   <link rel="shortcut icon" href="layui/images/face/fluidicon.png" type="image/x-icon" />
-  <script src="layui/layui.js"></script>  
+  <script src="layui/layui.all.js"></script>  
+  
   <script src="layui/jquery-3.2.1.min.js"></script>
   
 </head>
@@ -75,6 +76,23 @@
     <div style="padding: 15px;">
     
     
+    <form class="layui-form" action="">
+    
+    <div class="layui-form-item">
+    <label class="layui-form-label">请选择资方</label>
+    <div class="layui-input-block">
+      <select name="zifang" lay-verify="required" display:block size="35">
+        <option value=""></option>
+        <option value="huoqiu">火球理财</option>
+        <option value="shuiqiu">星火钱包</option>
+        <option value="fengqiu">黄金金融</option>
+        <option value="diqiu">空中金融</option>
+        
+      </select>
+    </div>
+  </div>
+    
+  </br>
    
   
     
@@ -85,14 +103,13 @@
       </div>
     </div>
     
-  
+  	
 	
 	<input type="button" id="exportBtn" class="layui-btn" value="导出Excel"/>
 	   
 	   
-	
-	 
-	 
+	</form>
+
 	 
 	<script>
 	
@@ -106,17 +123,12 @@
 			if(stime==null||stime==""||otime==null||otime==""){
 				layer.alert("请选择时间！", {icon: 2});
 			}else{
-				//layer.alert(stime+"~~~"+otime, {icon: 6});
-				 $.ajax({
-					 url:"/Data_Clear/ex/file.do",
-					 type:"post", 
-					 data:{"stime":stime,"otime":otime},dataType:"JSON",
-					 success:function(result){
-						 layer.alert(result, {icon: 6});
-					 },error:function(){
-							
-						}
-				 });
+				//下载
+				var url = "/Data_Clear/ex/file.do?";
+				var queryString = "stime="+stime+"&otime="+otime; 				
+				var urlq=url+queryString;
+				
+				location=urlq; 
 			}
 			
 		});
@@ -420,8 +432,8 @@ layui.use('laydate', function(){
   });
 });
 </script>
+
 <script src="layui/lay/modules/layer.js"></script>
-
-
+<script src="layui/lay/modules/form.js"></script>
 </body>
 </html>
