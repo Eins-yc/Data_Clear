@@ -98,11 +98,26 @@
 	
 	$(function(){
 		$("#exportBtn").click(function(){
-			var r=$("#test16").val().trim();
-			var b=r.split(" 到 ");//分割为数组
-			var d=b[0];//物品
-			var s=b[1];//型号
-			layer.alert(d+"~~~"+s, {icon: 6});
+			var timechoose=$("#test16").val().trim();
+			var time=timechoose.split(" 到 ");//分割为数组
+			var stime=time[0];//起始日期
+			var otime=time[1];//结束日期
+			
+			if(stime==null||stime==""||otime==null||otime==""){
+				layer.alert("请选择时间！", {icon: 2});
+			}else{
+				//layer.alert(stime+"~~~"+otime, {icon: 6});
+				 $.ajax({
+					 url:"/Data_Clear/ex/file.do",
+					 type:"post", 
+					 data:{"stime":stime,"otime":otime},dataType:"JSON",
+					 success:function(result){
+						 layer.alert(result, {icon: 6});
+					 },error:function(){
+							
+						}
+				 });
+			}
 			
 		});
 	});
@@ -236,7 +251,8 @@ layui.use('laydate', function(){
     elem: '#test16'
     ,type: 'datetime'
     ,range: '到'
-    ,format: 'yyyy年M月d日'
+    ,calendar: true
+    ,format: 'yyyy-MM-d'
   });
   
   //开启公历节日
