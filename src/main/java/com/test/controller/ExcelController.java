@@ -45,6 +45,30 @@ public class ExcelController {
 			}
 		
 		}
+	
+	
+	@RequestMapping("/test.do")
+	public void writeExcel(HttpServletRequest request, HttpServletResponse response,String sotime,String zifang) {
+		//System.out.println(sotime);
+		//System.out.println(zifang);
+		try {
+			List<String> list=new ArrayList<String>();
+			list.add(zifang);
+			list.add(sotime);
+			HSSFWorkbook scwb=scrapExcel.exportSC(list);
+			//HSSFWorkbook scwb=scrapExcel.exportSC(list);
+			response.setContentType("application/vnd.ms-excel");
+			response.setCharacterEncoding("utf-8"); 
+			response.setHeader("Content-disposition", "attachment;filename=Data.xls");
+			OutputStream ouputStream = response.getOutputStream();    
+			scwb.write(ouputStream);
+			ouputStream.flush();    
+			ouputStream.close();
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
 
 	
 	

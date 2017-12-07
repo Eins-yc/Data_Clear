@@ -80,7 +80,7 @@
     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 10px;">
   <legend>方框风格的表单集合</legend>
 </fieldset>
-<form class="layui-form layui-form-pane" action="/Data_Clear/ex/file.do">
+<form class="layui-form layui-form-pane" action="/Data_Clear/ex/test.do">
 
   
   <div class="layui-form-item">
@@ -88,7 +88,7 @@
     <div class="layui-input-block">
       <select name="zifang" lay-filter="" lay-verify="zifang">
         <option value="0"></option>
-        <option value="1">火球理财</option>
+        <option value="huoqiu">火球理财</option>
         <option value="2">土球理财</option>
         <option value="3">风球理财</option>
         <option value="4">雷球理财</option>
@@ -101,7 +101,7 @@
   <div class="layui-form-item">
       <label class="layui-form-label">请选择时间</label>
       <div class="layui-input-block">
-       <input type="text" class="layui-input" lay-filter="" id="sotime" placeholder="开始 到 结束" name="sotime" lay-verify="sotime" >
+       <input type="text" class="layui-input" required lay-filter="" id="sotime" placeholder="开始 到 结束" name="sotime" lay-verify="sotime" >
       </div>
     </div>
 
@@ -160,17 +160,7 @@ layui.use(['form', 'layedit','laydate'], function(){
 	      }	      
 	    }
 	  
-	  	,sotime: function(value){
-	  		//console.log(value);
-	  		var time=value.split(" 到 ");//分割为数组
-			var stime=time[0];//起始日期
-			var otime=time[1];//结束日期
-			console.log(stime);
-			console.log(otime);
-    	  if(stime==' '||stime==null){
-    		  return '请选择时间范围- -|||';
-    	  }
-      }
+	  	
 	    
 	  });
 	
@@ -178,7 +168,6 @@ layui.use(['form', 'layedit','laydate'], function(){
 	//监听提交  
 	  form.on('submit(demo1)', function(data){  
 	    
-	    console.log(data.field);
 	    return true;  
 	  });  
 	  
