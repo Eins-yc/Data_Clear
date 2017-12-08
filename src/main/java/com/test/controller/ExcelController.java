@@ -51,6 +51,10 @@ public class ExcelController {
 	public void writeExcel(HttpServletRequest request, HttpServletResponse response,String sotime,String zifang) {
 		//System.out.println(sotime);
 		//System.out.println(zifang);
+		String[] time=sotime.split(" µ½ ");
+		String startdate=time[0];
+		String overdate=time[1];
+		System.out.println(startdate+"tototo"+overdate);
 		try {
 			List<String> list=new ArrayList<String>();
 			list.add(zifang);

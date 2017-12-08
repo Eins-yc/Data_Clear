@@ -15,7 +15,7 @@ public class ScrapExcel {
 	String[] excelHeader = { "开始日期", "结束日期"};
 	
 	public HSSFWorkbook exportSC(List<String> ls){
-		System.out.println(ls);
+		//System.out.println(ls);
 		HSSFWorkbook scwb = new HSSFWorkbook();
 		HSSFSheet sheet = scwb.createSheet("数据");
 		HSSFRow row = sheet.createRow((int) 0);		 
